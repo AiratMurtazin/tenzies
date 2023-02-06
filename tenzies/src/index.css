@@ -105,3 +105,10 @@ main {
 	font-family: 'Karla', sans-serif;
 	margin-bottom: 1rem;
 }
+
+.stopWatch {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 15px;
+}
