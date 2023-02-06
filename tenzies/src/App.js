@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './index.css';
 import Die from './Die.js';
 import React from 'react';
