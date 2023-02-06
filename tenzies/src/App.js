@@ -10,6 +10,15 @@ function App() {
 	const [tenzies, setTenzies] = React.useState(false);
 	const [rolls, setRolls] = React.useState(0);
 
+	let arrDices = [
+		'<i class="fa-solid fa-dice-one"></i>',
+		'<i class="fa-solid fa-dice-two"></i>',
+		'<i class="fa-solid fa-dice-three"></i>',
+		'<i class="fa-solid fa-dice-four"></i>',
+		'<i class="fa-solid fa-dice-five"></i>',
+		'<i class="fa-solid fa-dice-six"></i>',
+	];
+
 	//* Stopwatch
 
 	const [time, setTime] = React.useState(0);
