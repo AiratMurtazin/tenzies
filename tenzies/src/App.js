@@ -6,21 +6,20 @@ import { nanoid } from 'nanoid';
 import Confetti from 'react-confetti';
 
 function App() {
+	let arrDices = [
+		<i class='fa-solid fa-dice-one'></i>,
+		<i class='fa-solid fa-dice-two'></i>,
+		<i class='fa-solid fa-dice-three'></i>,
+		<i class='fa-solid fa-dice-four'></i>,
+		<i class='fa-solid fa-dice-five'></i>,
+		<i class='fa-solid fa-dice-six'></i>,
+	];
+
 	const [dice, setDice] = React.useState(allNewDice());
 	const [tenzies, setTenzies] = React.useState(false);
 	const [rolls, setRolls] = React.useState(0);
 
-	let arrDices = [
-		'<i class="fa-solid fa-dice-one"></i>',
-		'<i class="fa-solid fa-dice-two"></i>',
-		'<i class="fa-solid fa-dice-three"></i>',
-		'<i class="fa-solid fa-dice-four"></i>',
-		'<i class="fa-solid fa-dice-five"></i>',
-		'<i class="fa-solid fa-dice-six"></i>',
-	];
-
 	//* Stopwatch
-
 	const [time, setTime] = React.useState(0);
 	const [start, setStart] = React.useState(false);
 
@@ -44,8 +43,10 @@ function App() {
 
 	React.useEffect(() => {
 		const allHeld = dice.every(die => die.isHeld);
-		const firstValue = dice[0].value;
-		const allSameValue = dice.every(die => die.value === firstValue);
+		const firstValue = dice[0].value.props.class;
+		const allSameValue = dice.every(
+			die => die.value.props.class === firstValue
+		);
 		if (allHeld && allSameValue) {
 			setTenzies(true);
 		}
@@ -53,7 +54,7 @@ function App() {
 
 	function generateNewDie() {
 		return {
-			value: Math.ceil(Math.random() * 6),
+			value: arrDices[Math.floor(Math.random() * arrDices.length)],
 			isHeld: false,
 			id: nanoid(),
 		};
