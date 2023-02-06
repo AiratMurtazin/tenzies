@@ -29,6 +29,10 @@ function App() {
 		return () => clearInterval(interval);
 	}, [start]);
 
+	useEffect(() => {
+		setStart(false);
+	}, [tenzies]);
+
 	React.useEffect(() => {
 		const allHeld = dice.every(die => die.isHeld);
 		const firstValue = dice[0].value;
@@ -65,8 +69,10 @@ function App() {
 			setTenzies(false);
 			setDice(allNewDice());
 			setRolls(prev => (prev = -1));
+			setTime(0);
 		}
 		numOfRolls();
+		setStart(true);
 	}
 
 	function holdDice(id) {
@@ -105,22 +111,11 @@ function App() {
 			<div className='stopWatch'>
 				<h4>Time</h4>
 				<h3>
-					<span>{'0' + ((time / 60000) % 60).slice(-2)}</span>
-					<span>{'0' + ((time / 1000) % 60).slice(-2)}</span>
-					<span>{'0' + ((time / 10) % 1000).slice(-2)}</span>
+					<span>{('0' + Math.floor((time / 60000) % 60)).slice(-2)}</span>:
+					<span>{('0' + Math.floor((time / 1000) % 60)).slice(-2)}</span>:
+					<span>{('0' + Math.floor((time / 10) % 1000)).slice(-2)}</span>
 				</h3>
-				<div>
-					<button onClick={() => setStart(true)}>Start</button>
-					<button onClick={() => setStart(false)}>Stop</button>
-					<button
-						onClick={() => {
-							setTime(0);
-							setStart(false);
-						}}
-					>
-						Reset
-					</button>
-				</div>
+				<div></div>
 			</div>
 			<button className='roll-dice' onClick={rollDice}>
 				{tenzies ? 'New Game' : 'Roll'}
