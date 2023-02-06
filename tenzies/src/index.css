@@ -95,3 +95,13 @@ main {
 	align-items: center;
 	height: 90vh;
 }
+
+.num-rolls {
+	background-color: #0b2434;
+	color: #fff;
+	border-radius: 0.5rem;
+	padding: 0.5rem;
+	font-weight: bold;
+	font-family: 'Karla', sans-serif;
+	margin-bottom: 1rem;
+}
